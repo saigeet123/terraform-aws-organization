@@ -27,7 +27,7 @@ locals {
 resource "aws_organizations_organizational_unit" "level_1_ous" {
   count = length(local.level_1_ou_arguments)
   name = local.level_1_ou_arguments[count.index].name
-  parent_id = r-xwig
+  parent_id = aws_organizations_organization.organization.roots[0].id
 }
 
 resource "aws_organizations_organizational_unit"  "level_2_ous" {
